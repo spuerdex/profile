@@ -4,10 +4,10 @@ export default function About() {
       {/* Left: Text */}
       <div className="col-span-1">
         <h2 className="text-2xl font-bold mb-6 text-white">About Me</h2>
-        <div className="text-sm text-gray-400 leading-loose space-y-5">
+        <div className="text-sm text-gray-300 leading-loose space-y-5">
           <p className="text-sm">
             Hello, my name is{" "}
-            <span className="text-white font-semibold">Chinrat Khammasuk</span>.
+            <span className="text-white font-semibold">Chinnarat Khammasuk</span>.
             I am a passionate web developer who loves building seamless digital
             experiences through thoughtful design and clean code.
           </p>

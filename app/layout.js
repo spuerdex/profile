@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 
 export const metadata = {
-  title: "Wellcom to myProfile",
+  title: "Chinnarat Kh.",
   description: "Profile Mr.CHINNARAT KHAMMASUK",
 };
 
