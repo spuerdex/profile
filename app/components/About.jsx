@@ -39,11 +39,11 @@ export default function About() {
       </div>
 
       {/* Right: Image */}
-      <div className="col-span-1 flex justify-end mask-r-from-30%">
+      <div className="col-span-1 flex justify-end mask-l-from-20%">
         <img
-          src="/com01.jpg"
-          alt="Chinrat Khammasuk"
-          className="w-120 h-80 rounded-sm object-cover shadow-lg grayscale"
+          src="projects/022.jpg"
+          alt="Chinnarat Khammasuk"
+          className="w-120 h-80 rounded-sm object-cover shadow-lg  transition duration-300 ease-in-out transform hover:scale-105"
         />
       </div>
      

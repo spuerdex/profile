@@ -3,7 +3,7 @@ export default function Contact() {
     <>
       <section id="contact" className="py-10  text-gray-200 relative z-10">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 z-0"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 z-0 mask-t-from-50%"
           style={{ backgroundImage: "url('/techstack/bgkey.jpg')" }}
         ></div>
         <div className=" relative max-w-6xl mx-auto px-4 z-10">
@@ -92,7 +92,7 @@ export default function Contact() {
             {/* Background image layer */}
 
             {/* Content layer */}
-            <div className="relative z-10 p-4">
+            <div className="relative z-10 p-4 bg-gray-900 border border-gray-600 rounded-lg">
               <h3 className="text-lg font-semibold mb-2 text-white">
                 Work Experience
               </h3>

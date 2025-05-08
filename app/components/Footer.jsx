@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="row-start-3 flex flex-col sm:flex-row gap-4 items-center justify-between px-6 py-2 bg-gray-900 text-gray-300">
+    <footer className="row-start-3 flex flex-col sm:flex-row gap-4 items-center justify-between px-6 py-2 bg-black text-gray-300">
       {/* Branding / Logo */}
       <div className="flex items-center gap-2">
         <img src="techstack/esc_profile.jpg" alt="Logo" width={30} height={30} className="rounded-full"/>
