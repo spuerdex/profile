@@ -68,6 +68,14 @@ export default function Contact() {
               <div className="relative border-l border-gray-700 pl-4">
                 <div className="mb-6">
                   <div className="absolute -left-1.5 w-3 h-3 bg-green-500 rounded-full border border-white"></div>
+                  <p className="text-gray-400 font-medium">2025 - Now</p>
+                  <p className="text-gray-300">IT Support & Audiovisual staff</p>
+                  <p className="text-gray-500">
+                    Chiangrai College 
+                  </p>
+                </div>
+                <div className="mb-6">
+                  <div className="absolute -left-1.5 w-3 h-3 bg-yellow-500 rounded-full border border-white"></div>
                   <p className="text-gray-400 font-medium">2023 - 2025</p>
                   <p className="text-gray-300">IT Support & Programmer</p>
                   <p className="text-gray-500">
