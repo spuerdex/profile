@@ -6,20 +6,36 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 const skills = [
-  { name: "HTML", icon: "/techstack/html.png"},
+  // ======================
+  // 🔹 Web / Programming
+  // ======================
+  { name: "HTML", icon: "/techstack/html.png" },
   { name: "CSS", icon: "/techstack/css.png" },
   { name: "JavaScript", icon: "/techstack/javascript.png" },
-  { name: "nextjs", icon: "/techstack/nextjs.png" },
+  { name: "Next.js", icon: "/techstack/nextjs.png" },
   { name: "Node.js", icon: "/techstack/nodejs.png" },
   { name: "Tailwind CSS", icon: "/techstack/tailwind.png" },
   { name: "MUI", icon: "/techstack/mui.png" },
-  { name: "figma", icon: "/techstack/figma.png" },
+  { name: "Figma", icon: "/techstack/figma.png" },
+
+  // ======================
+  // 🔹 งาน IT
+  // ======================
+  { name: "IT Support", icon: "/techstack/technical-support.png" },
+  { name: "Networking", icon: "/techstack/local-area-network.png" },
+  { name: "Server", icon: "/techstack/server.png" },
+
+  // ======================
+  // 🔹 งานโสตทัศน์ (AV)
+  // ======================
+  { name: "CCTV", icon: "/techstack/cctv.png" },
+  { name: "Sound System", icon: "/techstack/sound-system.png" },
+  { name: "Projector", icon: "/techstack/projector.png" },
 ];
 
 export default function Skills() {
   return (
     <section id="skills" className="pt-20 pb-10 relative z-10 mask-t-from-50%">
-     
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-2xl font-bold text-left mb-10 text-gray-100">
           Skills
@@ -43,6 +59,7 @@ export default function Skills() {
                   alt={skill.name}
                   className="w-16 h-16 mb-2 rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:shadow-white"
                 />
+                <p className="text-gray-300 text-xs">{skill.name}</p>
               </div>
             </SwiperSlide>
           ))}

@@ -3,77 +3,153 @@
 import { useState } from "react";
 
 const projects = [
+  // ======================
+  // 🔹 งาน IT
+  // ======================
   {
     title: "Development of Web Application",
-    image: "/projects/0001.jpg",
+    images: ["projects/0001.jpg","/projects/020.jpg","/projects/023.jpg"],
     detail:
-      "Designed and developed a web application using JavaScript, React.js, Node.js, and MUI with Tailwind CSS. Focused on responsive design ",
+      "Designed and developed a web application using JavaScript, React.js, Node.js, and MUI with Tailwind CSS. Focused on responsive design.",
+    category: "IT",
   },
   {
     title: "Data Monitoring",
-    image: "/projects/001.jpg",
+    images: ["/projects/001.jpg", "/projects/007.jpg","/projects/019.jpg"],
     detail:
-      "Implemented a real-time data monitoring dashboard that tracked and visualized critical system metrics. Collaborated with IT support and customers to ensure system reliability, fast response to alerts, and seamless data presentation.",
+      "Implemented a real-time data monitoring dashboard for system metrics, ensuring reliability and seamless data presentation.",
+    category: "IT",
   },
   {
     title: "Configuration Management System",
-    image: "/projects/012.jpg",
+    images: ["/projects/012.jpg", "/projects/014.jpg","/projects/015.jpg"],
     detail:
-      "Developed a client-server configuration management system to automate the deployment and version control of network devices. Built with robust logging, role-based access, and easy rollback functionalities.",
-  },
-  {
-    title: "Configuration Management System",
-    image: "/projects/021.jpg",
-    detail:
-      "Extended the functionality of the existing configuration management system with enhanced UI/UX and security improvements. Integrated a backup and recovery module and improved system scalability for enterprise usage.",
-  },
-  {
-    title: "Fiber Optic System Installation",
-    image: "/projects/013.jpg",
-    detail:
-      "Installed and tested fiber optic cabling systems for high-speed internet infrastructure. Responsibilities included splicing, signal testing, troubleshooting, and preparing documentation for quality assurance.",
+      "Developed a client-server configuration management system with role-based access and rollback functionality.",
+    category: "IT",
   },
   {
     title: "Internet System Installation",
-    image: "/projects/017.jpg",
+    images: ["/projects/017.jpg", "/projects/004.jpg","/projects/009.jpg","/projects/003.jpg"],
     detail:
-      "Led the setup and maintenance of internet systems for commercial and residential sites. Tasks included configuring routers, switches, and wireless access points, along with post-installation support and documentation.",
+      "Led setup and maintenance of internet systems for commercial and residential sites, configuring routers, switches, and wireless access points.",
+    category: "IT",
   },
+  {
+    title: "Fiber Optic System Installation",
+    images: ["/projects/013.jpg", "/projects/004.jpg","/projects/018.jpg","/projects/002.jpg"],
+    detail:
+      "Installed and tested fiber optic cabling systems for high-speed internet infrastructure including splicing and troubleshooting.",
+    category: "IT",
+  },
+
+  // ======================
+  // 🔹 งานโสตทัศน์
+  // ======================
+  {
+    title: "Installed and configured CCTV and security systems",
+    images: ["/projects/av/01.jpg", "/projects/av/02.jpg","/projects/av/03.jpg"],
+    detail:
+      "Installed and configured CCTV and security systems for offices, buildings, and public areas, ensuring proper coverage and effective incident monitoring.",
+    category: "AV",
+  },
+  {
+    title: "Sound System Setup",
+    images: ["/projects/av/05.jpg", "/projects/av/06.jpg","/projects/av/08.jpg","/projects/av/09.jpg"],
+    detail:
+      "Installed and configured audio systems for conferences, classrooms, and live events, ensuring high-quality sound and minimal feedback.",
+    category: "AV",
+  },
+  {
+    title: "Multimedia Presentation Support",
+    images: ["/projects/av/11.jpg", "/projects/av/13.jpg","/projects/av/12.jpg","/projects/av/14.jpg"],
+    detail:
+      "Provided technical support for projectors, video conferencing systems, and streaming setups during academic and corporate events.",
+    category: "AV",
+  },
+  {
+    title: "Installed, maintained, and repaired office IT equipment.",
+    image: "/projects/av/07.jpg",
+    images: ["/projects/av/07.jpg", "/projects/av/16.jpg","/projects/av/17.jpg","/projects/av/15.jpg"],
+    detail:
+      "Installed, maintained, and troubleshot office IT equipment, including computers, printers, and network devices, ensuring minimal downtime and reliable system performance.",
+    category: "AV",
+  },
+
 ];
 
 export default function Projects() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [filter, setFilter] = useState("All");
 
-  const openImage = (image) => {
-    setSelectedImage(image);
+  const openProject = (project) => {
+    setSelectedProject(project);
+    setCurrentIndex(0); // เริ่มที่รูปแรก
   };
 
-  const closeImage = () => {
-    setSelectedImage(null);
+  const closeProject = () => {
+    setSelectedProject(null);
+    setCurrentIndex(0);
   };
+
+  const nextImage = () => {
+    if (!selectedProject) return;
+    setCurrentIndex((prev) =>
+      prev + 1 < selectedProject.images.length ? prev + 1 : 0
+    );
+  };
+
+  const prevImage = () => {
+    if (!selectedProject) return;
+    setCurrentIndex((prev) =>
+      prev - 1 >= 0 ? prev - 1 : selectedProject.images.length - 1
+    );
+  };
+
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
     <>
       <section id="projects" className="py-20 relative">
-        {/* <div
-          className="absolute inset-0 bg-cover bg-center opacity-20 z-0"
-          style={{ backgroundImage: "url('/bg002.jpg')" }}
-        ></div> */}
-
         <div className="relative max-w-6xl mx-auto px-4 z-10">
-          <h2 className="text-2xl font-bold text-left mb-10 text-gray-100">
+          <h2 className="text-2xl font-bold text-left mb-6 text-gray-100">
             Work Experience
           </h2>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-            {projects.map((project, index) => (
+          {/* ปุ่มเลือกหมวดหมู่ */}
+          <div className="flex gap-4 mb-10">
+            {["All", "IT", "AV"].map((cat) => (
+              <button
+                key={cat}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
+                  filter === cat
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-700 text-gray-200 hover:bg-gray-600"
+                }`}
+                onClick={() => setFilter(cat)}
+              >
+                {cat === "All"
+                  ? "ทั้งหมด"
+                  : cat === "IT"
+                  ? "IT Support"
+                  : "งานโสตทัศนูปกรณ์"}
+              </button>
+            ))}
+          </div>
+
+          {/* แสดงโปรเจ็กต์ */}
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {filteredProjects.map((project, index) => (
               <div
                 key={index}
                 className="rounded-lg overflow-hidden shadow-lg bg-gray-800 hover:shadow-white hover:scale-105 transition transform duration-200 ease-in-out cursor-pointer"
-                onClick={() => openImage(project.image)}
+                onClick={() => openProject(project)}
               >
                 <img
-                  src={project.image}
+                  src={project.images[0]} // แสดงรูปแรกเป็น cover
                   alt={project.title}
                   className="w-full h-48 object-cover"
                 />
@@ -81,6 +157,9 @@ export default function Projects() {
                   <h3 className="text-sm font-semibold text-white">
                     {project.title}
                   </h3>
+                  <p className="text-xs text-gray-400">
+                    {project.category === "IT" ? "💻 IT" : "🎬 โสตฯ"}
+                  </p>
                 </div>
               </div>
             ))}
@@ -88,31 +167,54 @@ export default function Projects() {
         </div>
       </section>
 
-      {selectedImage && (
+      {/* Modal แสดงรายละเอียด */}
+      {selectedProject && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50"
-          onClick={closeImage}
+          onClick={closeProject}
         >
-          {/* พื้นหลังดำโปร่ง */}
           <div
             className="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm"
-            onClick={closeImage}
+            onClick={closeProject}
           ></div>
 
-          {/* กล่องภาพ + รายละเอียด */}
-          <div className="relative z-50 p-6 bg-gray-900 rounded-xl shadow-xl max-w-3xl w-full flex flex-col items-center space-y-4">
-            <img
-              src={selectedImage}
-              alt="Selected Project"
-              className="w-120 max-w-md h-120 rounded object-cover"
-              onClick={closeImage}
-            />
-            <div className="bg-gray-800 rounded-lg p-4">
+          <div
+            className="relative z-50 p-6 bg-gray-900 rounded-xl shadow-xl max-w-3xl w-full flex flex-col items-center space-y-4"
+            onClick={(e) => e.stopPropagation()} // กัน modal ปิดตอนคลิกข้างใน
+          >
+            {/* รูปภาพพร้อมปุ่มเลื่อน */}
+            <div className="relative w-full flex items-center justify-center">
+              <img
+                src={selectedProject.images[currentIndex]}
+                alt="Selected Project"
+                className="w-120 max-w-md h-80 rounded object-cover"
+              />
+
+              {/* ปุ่มเลื่อนซ้าย/ขวา */}
+              <button
+                onClick={prevImage}
+                className="absolute left-0 px-3 py-2 bg-black bg-opacity-50 text-white rounded-r-lg"
+              >
+                ◀
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-0 px-3 py-2 bg-black bg-opacity-50 text-white rounded-l-lg"
+              >
+                ▶
+              </button>
+            </div>
+
+            {/* ข้อมูลรายละเอียด */}
+            <div className="bg-gray-800 rounded-lg p-4 w-full">
               <p className="text-white text-lg font-semibold text-left">
-                {projects.find((p) => p.image === selectedImage)?.title}
+                {selectedProject.title}
               </p>
               <p className="text-white text-sm text-start">
-                {projects.find((p) => p.image === selectedImage)?.detail}
+                {selectedProject.detail}
+              </p>
+              <p className="text-gray-400 text-xs mt-2 text-right">
+                {currentIndex + 1} / {selectedProject.images.length}
               </p>
             </div>
           </div>
